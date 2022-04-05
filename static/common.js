@@ -10,8 +10,6 @@ function isAllFilledSudoku(board) {
     return true;
 }
 
-
-
 function isValidSudoku(board) {
     // modified from https://blog.csdn.net/Shannon_zhazha/article/details/121171111
     // 三个方向判重
@@ -31,9 +29,7 @@ function isValidSudoku(board) {
                 }
                 // 三个方向上每个位置，将当前数做标记，表示出现过了
                 rows[i + '-' + num] = true;
-                // console.log(rows)
                 columns[j + '-' + num] = true;
-                console.log(columns)
                 boxes[boxIndex + '-' + num] = true;
             }
         }
@@ -83,6 +79,9 @@ function getInvalidSudoku(board) {
 }
 
 function resetBoard() {
+    // unhide board
+    document.getElementById("game").style.display = "";
+
     // if exists a board, remove it and create a new one
     let board_elem = document.getElementById("board");
     if (board_elem) { board_elem.remove(); }
@@ -220,10 +219,16 @@ function initInputsFinished(inputs) {
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("change", function () {
             if (isAllFilledSudoku(window.board) && isValidSudoku(window.board)) {
+                console.log("Sudoku finished");
                 // Show restart image
                 document.getElementById("restart").style.display = "block";
+                // Hide board
+                document.getElementById("game").style.display = "none";
             }
         });
     }
 }
+
+
+
 

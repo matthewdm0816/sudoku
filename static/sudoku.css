@@ -20,7 +20,7 @@ tr {
 }
 .board {
     table-layout: fixed;
-    border: #443 3px solid;
+    border: #443 5px solid;
     width: 455px;
     height: 455px;
     background-color: #fff;
@@ -29,11 +29,10 @@ tr {
     text-align: center;
 }
 .restart{
-    border: #443 3px solid;
+    border: #443 5px solid;
     width: 455px;
     height: 455px;
     background-color: #fff;
-    vertical-align: middle;
     border-collapse: collapse;
     text-align: center;
     display: none;

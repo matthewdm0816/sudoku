@@ -29,17 +29,17 @@ window.onload = (() => {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/submit_sudoku", true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(JSON.stringify(window.board));
             xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 2) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
                     alert("Adding sudoku success!");
                     // reload the page
                     location.reload();
                 }
-                else if (xhr.readyState == 4 && xhr.status == 3) {
+                else if (xhr.readyState == 4 && xhr.status != 200) {
                     alert("Adding sudoku failed!");
                 }
             }
+            xhr.send(JSON.stringify(window.board));
         }
         else {
             alert("Invalid sudoku!");
