@@ -1,0 +1,19 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Play Sudoku
+{%endblock%}
+
+{%block content%}
+<h3>Play Sudoku</h3>
+<div align="left">
+    <div class="board" id="game" align="center">
+
+    </div>
+    <img id='restart' src='images/restart.png' alt='Win&Restart' onclick='getBoard()' class='restart'>
+</div>
+{%endblock%}
+
+{% block javascript %}
+<script type="text/javascript" src="/static/play_sudoku.js" > </script>
+{% endblock %}

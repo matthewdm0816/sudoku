@@ -1,0 +1,19 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Add Sudoku
+{%endblock%}
+
+{%block content%}
+<h3>Add Sudoku</h3>
+<div align="left">
+    <div class="board" id="game" align="center">
+
+    </div>
+    <button id='submit' type='button'>Add Sudoku</button>
+</div>
+{%endblock%}
+
+{% block javascript %}
+<script type="text/javascript" src="/static/add_sudoku.js" > </script>
+{% endblock %}

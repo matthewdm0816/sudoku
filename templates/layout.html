@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href='/static/sudoku.css' />
+    <title>{% block title %}{% endblock %} - Sudoku</title>
+    <script type="text/javascript" src="/static/common.js" > </script>
+    {% block javascript %}
+    {% endblock %}
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2022 by <a href="https://github.com/matthewdm0816">Kazami Michiru</a>.
+        {% endblock %}
+    </div>
+</body>
+
+</html>

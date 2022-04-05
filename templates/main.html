@@ -1,0 +1,15 @@
+{%extends "layout.html"%}
+
+{%block title%} 
+    Main Page
+{%endblock%}
+
+{%block content%}
+    
+    <a href="{{ add_sudoku_path }}">Add Sudoku</a>
+    {%if play_sudoku_path is not none %}
+    <br/>
+    <a href="{{ play_sudoku_path }}">Play Sudoku</a>
+    {%endif%}
+{%endblock%}
+
