@@ -1,5 +1,6 @@
 // Common helpers/utils
 function isAllFilledSudoku(board) {
+    // Check if all empty cells are filled
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if (board[i][j] == '0') {
@@ -10,33 +11,10 @@ function isAllFilledSudoku(board) {
     return true;
 }
 
-function isValidSudoku(board) {
-    // modified from https://blog.csdn.net/Shannon_zhazha/article/details/121171111
-    // 三个方向判重
-    const [rows, columns, boxes] = [{}, {}, {}];
-    // console.log(rows)
-    // 遍历数独
-    for (let i = 0; i < 9; i++) {
-        for (let j = 0; j < 9; j++) {
-            const num = board[i][j];
-            if (num !== '0') {
-                // 子数独序号:0~8，一共9个
-                const boxIndex = parseInt(i / 3) * 3 + parseInt(j / 3);
-                // 如果当前数已经在某个位置出现过了，返回false
 
-                if (rows[i + '-' + num] || columns[j + '-' + num] || boxes[boxIndex + '-' + num]) {
-                    return false;
-                }
-                // 三个方向上每个位置，将当前数做标记，表示出现过了
-                rows[i + '-' + num] = true;
-                columns[j + '-' + num] = true;
-                boxes[boxIndex + '-' + num] = true;
-            }
-        }
-    }
-    return true;
-};
 function getInvalidSudoku(board) {
+    // Acquire invalid rows, columns and boxes
+
     // Rows
     invalid_rows = []
     for (let i = 0; i < 9; i++) {
@@ -78,7 +56,15 @@ function getInvalidSudoku(board) {
     return [invalid_columns, invalid_rows, invalid_boxes];
 }
 
+function isValidSudoku(board){
+    // Check if the whole board is valid
+    let [invalid_columns, invalid_rows, invalid_boxes] = getInvalidSudoku(board);
+    return invalid_columns.length == 0 && invalid_rows.length == 0 && invalid_boxes.length == 0;
+}
+
 function resetBoard() {
+    // Clean the board
+
     // unhide board
     document.getElementById("game").style.display = "";
 
@@ -93,6 +79,8 @@ function resetBoard() {
 }
 
 function drawBoard(boardElem, board) {
+    // Draw the board according to given input state
+
     let inputs = [];
     for (let i = 0; i < 9; i++) {
         tr = document.createElement("tr");
@@ -128,6 +116,7 @@ function resetGridBackground() {
 }
 
 function renderInvalidSudoku(board) {
+    // Display invalid sudoku rows, columns and boxes in red
     let [invalid_columns, invalid_rows, invalid_boxes] = getInvalidSudoku(board);
     console.log(invalid_columns, invalid_rows, invalid_boxes);
     invalid_rows.forEach(element => {
